@@ -8,11 +8,11 @@ StsGateway is a OAuth2 STS(Security Token Service) client
 
 
 ### Dependencies
-.NET Standand 2.1
+.NET Standard 2.1
 
 You can check supported frameworks here:
 
-https://learn.microsoft.com/pt-br/dotnet/api/?view=net-6.0
+https://learn.microsoft.com/pt-br/dotnet/standard/net-standard?tabs=net-standard-2-1
 
 ### Instalation
 This package is available through Nuget Packages: https://www.nuget.org/packages/StsGateway
