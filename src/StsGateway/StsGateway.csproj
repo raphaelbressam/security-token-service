@@ -17,9 +17,9 @@
 		<PackageProjectUrl>https://github.com/raphaelbressam/sts-gateway</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageIcon>icon.png</PackageIcon>
-		<PackageTags>crosscuttingconcerns;json;</PackageTags>
+		<PackageTags>sts;gateway;facade;</PackageTags>
 		<ReleaseNotes>Visit our GitHub before installing.</ReleaseNotes>
-		<Title>Cross-Cutting</Title>
+		<Title>StsGateway</Title>
 		<Summary>StsGateway is a OAuth2 STS(Security Token Service) client.</Summary>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
