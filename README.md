@@ -29,7 +29,7 @@ dotnet add package StsGateway
 ```
 
 ## How to use
-### Basic
+### Basic Configuration
 ```csharp
 
 services.AddStsGateway(config =>
@@ -41,7 +41,7 @@ services.AddStsGateway(config =>
 });
 
 ```
-### With Memory Cache
+### With Memory Cache Configuration
 ```csharp
 
 services.AddMemoryCache();
@@ -53,5 +53,33 @@ services.AddStsGateway(config =>
     config.RequestUri = new Uri(https://you_url);
     config.CacheType = StsGateway.StsGatewayOptions.CacheTypeEnum.MemoryCache;
 });
+
+```
+### Usage
+#### Example 01
+```csharp
+
+var stsGateway = serviceProvider.GetService<IStsGateway>();
+var accessToken = await stsGateway!.GetAccessTokenAsync();
+
+```
+#### Example 02
+```csharp
+
+public class Customer()
+{
+    private readonly IStsGateway _stsGateway;
+    public Customer(IStsGateway stsGateway)
+    {
+        _stsGateway = stsGateway;
+    }
+
+    public void SaveCustomer()
+    {
+        var accessToken = _stsGateway.GetAccessTokenAsync();
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+        _httpClient.PostAsync(........);
+    }
+}
 
 ```
