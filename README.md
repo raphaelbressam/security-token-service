@@ -28,8 +28,8 @@ Install-Package StsGateway
 dotnet add package StsGateway
 ```
 
-### How to use
-## Basic
+## How to use
+### Basic
 ```csharp
 
 services.AddStsGateway(config =>
@@ -41,7 +41,7 @@ services.AddStsGateway(config =>
 });
 
 ```
-## With Memory Cache
+### With Memory Cache
 ```csharp
 
 services.AddMemoryCache();
