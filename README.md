@@ -28,10 +28,30 @@ Install-Package StsGateway
 dotnet add package StsGateway
 ```
 
-## How to use
+### How to use
+## Basic
 ```csharp
 
-string jsonString = "{ \"name\":\"product a\" }";
-STS Gateway.PublishMessage(jsonString);
+services.AddStsGateway(config =>
+{
+    config.ClientId = "YOUR ClIENT ID";
+    config.ClientSecret = "YOUR CLIENT SECRET";
+    config.GrantType = "GRANT TYPE EX: client_credentials";
+    config.RequestUri = new Uri(https://you_url);
+});
+
+```
+## With Memory Cache
+```csharp
+
+services.AddMemoryCache();
+services.AddStsGateway(config =>
+{
+    config.ClientId = "YOUR ClIENT ID";
+    config.ClientSecret = "YOUR CLIENT SECRET";
+    config.GrantType = "GRANT TYPE EX: client_credentials";
+    config.RequestUri = new Uri(https://you_url);
+    config.CacheType = StsGateway.StsGatewayOptions.CacheTypeEnum.MemoryCache;
+});
 
 ```
