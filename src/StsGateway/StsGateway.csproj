@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<ImplicitUsings>false</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<PackageId>StsGateway</PackageId>
+		<Version>1.0.0</Version>
+		<icon>https://github.com/raphaelbressam/sts-gateway/media/icon.png</icon>
+		<License>MIT</License>
+		<Authors>Raphael Bressam</Authors>
+		<Company>raphaelbressam</Company>
+		<PackageDescription>StsGateway is a OAuth2 STS(Security Token Service) client.</PackageDescription>
+		<Description>StsGateway is a OAuth2 STS(Security Token Service) client.</Description>
+		<RepositoryUrl>https://github.com/raphaelbressam/sts-gateway</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/raphaelbressam/sts-gateway</PackageProjectUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageTags>crosscuttingconcerns;json;</PackageTags>
+		<ReleaseNotes>Visit our GitHub before installing.</ReleaseNotes>
+		<Title>Cross-Cutting</Title>
+		<Summary>StsGateway is a OAuth2 STS(Security Token Service) client.</Summary>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Options" Version="7.0.1" />
+		<PackageReference Include="System.Text.Json" Version="7.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\media\icon.png" Pack="true" PackagePath="\" />
+		<None Include="..\..\README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+</Project>
