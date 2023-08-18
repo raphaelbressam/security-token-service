@@ -6,7 +6,7 @@
 		<Nullable>enable</Nullable>
 
 		<PackageId>StsGateway</PackageId>
-		<Version>1.0.2</Version>
+		<Version>1.0.3</Version>
 		<icon>https://github.com/raphaelbressam/sts-gateway/media/icon.png</icon>
 		<License>MIT</License>
 		<Authors>Raphael Bressam</Authors>

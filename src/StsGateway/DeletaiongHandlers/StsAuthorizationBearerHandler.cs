@@ -9,7 +9,7 @@ namespace StsGateway.DeletaiongHandlers
     public class StsAuthorizationBearerHandler : DelegatingHandler
     {
         readonly IStsGateway _stsGateway;
-        public StsAuthorizationBearerHandler(StsGateway stsGateway)
+        public StsAuthorizationBearerHandler(IStsGateway stsGateway)
         {
             _stsGateway = stsGateway;
         }
@@ -24,7 +24,7 @@ namespace StsGateway.DeletaiongHandlers
         private async Task AddBearerTokenHeader(HttpRequestMessage request)
         {
             string? token = await _stsGateway.GetAccessTokenAsync();
-            if (token is null)
+            if (string.IsNullOrWhiteSpace(token))
                 throw new ArgumentNullException(nameof(token), "STS Token is null!");
 
             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
