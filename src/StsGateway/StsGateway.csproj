@@ -6,7 +6,7 @@
 		<Nullable>enable</Nullable>
 
 		<PackageId>StsGateway</PackageId>
-		<Version>1.0.0</Version>
+		<Version>1.0.2</Version>
 		<icon>https://github.com/raphaelbressam/sts-gateway/media/icon.png</icon>
 		<License>MIT</License>
 		<Authors>Raphael Bressam</Authors>
@@ -26,6 +26,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Options" Version="7.0.1" />
 		<PackageReference Include="System.Text.Json" Version="7.0.3" />
 	</ItemGroup>

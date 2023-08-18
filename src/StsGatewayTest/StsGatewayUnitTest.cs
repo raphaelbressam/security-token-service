@@ -26,7 +26,7 @@ namespace StsGatewayTest
                 }));
 
             ServiceCollection services = new ServiceCollection();
-            services.AddStsGateway(config =>
+            services.AddStsGateway((sp, config) =>
             {
                 config.ClientId = "test";
                 config.ClientSecret = "test";
@@ -59,7 +59,7 @@ namespace StsGatewayTest
 
             ServiceCollection services = new ServiceCollection();
             services.AddMemoryCache();
-            services.AddStsGateway(config =>
+            services.AddStsGateway((sp, config) =>
             {
                 config.ClientId = "test";
                 config.ClientSecret = "test";
@@ -84,7 +84,7 @@ namespace StsGatewayTest
                 .RespondWith(Response.Create().WithStatusCode(401));
 
             ServiceCollection services = new ServiceCollection();
-            services.AddStsGateway(config =>
+            services.AddStsGateway((sp, config) =>
             {
                 config.ClientId = "test";
                 config.ClientSecret = "test";
@@ -109,7 +109,7 @@ namespace StsGatewayTest
 
             ServiceCollection services = new ServiceCollection();
             services.AddMemoryCache();
-            services.AddStsGateway(config =>
+            services.AddStsGateway((sp, config) =>
             {
                 config.ClientId = "test";
                 config.ClientSecret = "test";
