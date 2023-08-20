@@ -5,23 +5,29 @@ namespace StsGateway
     public class StsGatewayOptions
     {
         public Uri? RequestUri { get; set; }
-        public string? ClientId { get; set; }
-        public string? ClientSecret { get; set; }
-        public string? GrantType { get; set; }
-        public CacheTypeEnum CacheType { get; set; } = StsGatewayOptions.CacheTypeEnum.None;
+        public string ClientId { get; set; } = string.Empty;
+        public string ClientSecret { get; set; } = string.Empty;
+        public string GrantType { get; set; } = string.Empty;
+        public Enums.CacheTypeEnum CacheType { get; set; } = Enums.CacheTypeEnum.None;
 
-        public void ThrowIfPropertiesNull()
+        /// <summary>
+        /// Throws an ArgumentNullException if any of the required properties are null or whitespace.
+        /// </summary>
+        public void ValidateProperties()
         {
-            if (RequestUri == null) throw new ArgumentNullException(nameof(RequestUri));
-            if (string.IsNullOrEmpty(ClientId)) throw new ArgumentNullException(nameof(ClientId));
-            if (string.IsNullOrEmpty(ClientSecret)) throw new ArgumentNullException(nameof(ClientSecret));
-            if (string.IsNullOrEmpty(GrantType)) throw new ArgumentNullException(nameof(GrantType));
+            ThrowIfPropertyNullOrWhitespace(RequestUri?.ToString() ?? string.Empty, nameof(RequestUri));
+            ThrowIfPropertyNullOrWhitespace(ClientId, nameof(ClientId));
+            ThrowIfPropertyNullOrWhitespace(ClientSecret, nameof(ClientSecret));
+            ThrowIfPropertyNullOrWhitespace(GrantType, nameof(GrantType));
         }
 
-        public enum CacheTypeEnum
+        private static void ThrowIfPropertyNullOrWhitespace(string value, string paramName)
         {
-            None = 0,
-            MemoryCache = 1
+            if (string.IsNullOrWhiteSpace(value))
+                throw new ArgumentNullException(paramName);
         }
+
+
     }
+
 }

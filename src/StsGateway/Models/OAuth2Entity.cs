@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace StsGateway.Models
@@ -17,10 +18,16 @@ namespace StsGateway.Models
         public string Scope { get; set; } = string.Empty;
         [JsonPropertyName("active")]
         public bool Active { get; set; }
+        public DateTime CreatedAt { get; } = DateTime.UtcNow;
 
         public static OAuth2Entity? FromJsonString(string json)
         {
             return JsonSerializer.Deserialize<OAuth2Entity>(json);
         }
+
+        public bool IsValid()
+        => !string.IsNullOrWhiteSpace(AccessToken)
+            && ExpiresIn > 0
+            && CreatedAt.AddSeconds(ExpiresIn) > DateTime.UtcNow;
     }
 }
