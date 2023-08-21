@@ -28,6 +28,7 @@ namespace StsGatewayTest
 
             ServiceCollection services = new ServiceCollection();
             services.AddLogging();
+            services.AddHttpClient();
             services.AddStsGateway((sp, config) =>
             {
                 config.ClientId = "test";
@@ -61,6 +62,7 @@ namespace StsGatewayTest
 
             ServiceCollection services = new ServiceCollection();
             services.AddMemoryCache();
+            services.AddHttpClient();
             services.AddStsGateway((sp, config) =>
             {
                 config.ClientId = "test";
@@ -86,6 +88,7 @@ namespace StsGatewayTest
                 .RespondWith(Response.Create().WithStatusCode(401));
 
             ServiceCollection services = new ServiceCollection();
+            services.AddHttpClient();
             services.AddStsGateway((sp, config) =>
             {
                 config.ClientId = "test";
@@ -110,6 +113,7 @@ namespace StsGatewayTest
                 .RespondWith(Response.Create().WithStatusCode(401));
 
             ServiceCollection services = new ServiceCollection();
+            services.AddHttpClient();
             services.AddMemoryCache();
             services.AddStsGateway((sp, config) =>
             {
@@ -127,7 +131,7 @@ namespace StsGatewayTest
             accessToken.Should().BeNullOrWhiteSpace();
         }
 
-        [Fact(DisplayName = "Given that I don't have cache and my client id and secret key be correct but the OAuth token is not valid. When executing access token, be prompted. Then the ArgumentException should be throw.")]
+        [Fact(DisplayName = "Given that I don't have cache and my client id and secret key be correct but the OAuth token is not valid. When executing access token, be prompted. Then the result should be null.")]
         public async Task FailCaseThree()
         {
             var server = WireMockServer.Start();
@@ -144,6 +148,7 @@ namespace StsGatewayTest
 
             ServiceCollection services = new ServiceCollection();
             services.AddLogging();
+            services.AddHttpClient();
             services.AddStsGateway((sp, config) =>
             {
                 config.ClientId = "test";
@@ -156,7 +161,9 @@ namespace StsGatewayTest
 
             var stsGateway = serviceProvider.GetService<IStsGateway>();
 
-            await Assert.ThrowsAsync<ArgumentException>(() => stsGateway!.GetAccessTokenAsync());
+            var result = await stsGateway!.GetAccessTokenAsync();
+
+            result.Should().BeNullOrWhiteSpace();
         }
 
         [Fact(DisplayName = "Given that I don't have cache and my client id and secret key be correct but the OAuth token is not valid. When executing access token, be prompted and the response be null. Then the JsonException should be throw.")]
@@ -168,6 +175,7 @@ namespace StsGatewayTest
 
             ServiceCollection services = new ServiceCollection();
             services.AddLogging();
+            services.AddHttpClient();
             services.AddStsGateway((sp, config) =>
             {
                 config.ClientId = "test";
